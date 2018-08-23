@@ -5,6 +5,11 @@ const BOARD_AS_SINGLE_STRING = require('../config');
 
 class Board {
 
+
+  setUp() {
+
+    return []
+  }
     
   
 }
