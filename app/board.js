@@ -5,7 +5,7 @@ const configVariables = require('../config');
 
 // set up board as a sqaure
 
-class WordSearch {
+class WordSearchSetUp {
 
   constructor () {
     this.wordsToSearchFor = configVariables.WORDS_TO_SEARCH_FOR.split(' ');
@@ -36,4 +36,4 @@ class WordSearch {
   
 }
   
-module.exports = WordSearch;
+module.exports = WordSearchSetUp;
