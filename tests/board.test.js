@@ -1,5 +1,10 @@
 const Board = require('../app/board');
 
+test ("board should have an array of words to search for", () => {
+    const board = new Board()
+    expect(Array.isArray(board.wordsToSearchFor)).toBe(true)
+})
+
 describe('Board setup building an array that represents a square board', () => {
     let board;
 
@@ -17,5 +22,7 @@ describe('Board setup building an array that represents a square board', () => {
 
     test("Set up array's length should be equal to the length of the sub arrays", () => {
         expect(board.setUp().length).toEqual(board.setUp()[0].length)
-    })
+    });
+
+    
 })
