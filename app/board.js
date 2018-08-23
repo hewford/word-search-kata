@@ -8,7 +8,7 @@ class Board {
 
   setUp() {
 
-    return []
+    return [[]]
   }
     
   
