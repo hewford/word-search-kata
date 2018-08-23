@@ -29,4 +29,12 @@ describe("solution should find words to find on the board horizontally", () => {
         expect(typeof wordSearchQuery.solution).toBe('object')
     })
 
+    test("word search query's this.solution's keys are named by the words that are being searched", () => {
+
+        expect(wordSearchConfiguration.wordsToSearchFor.every(function(word){
+            return wordSearchQuery.solution.hasOwnProperty(word)
+        })).toBe(true)
+
+    })
+
 })
