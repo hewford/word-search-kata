@@ -1,4 +1,4 @@
-const WordSearchSetUp = require('../app/board');
+const WordSearchSetUp = require('../app/boardSetUp');
 
 /* TESTS FOR THE CONFIGURATION OF WORDS TO SEARCH FOR */
 describe("Word Search should have an array of words to search for", () => {
