@@ -14,20 +14,37 @@ class WordSearchQuery {
     searchHorizontallyToRight (word, board) {
         // initialize placeholder for possible match
         let foundWord = '';
+        let matchedWordLength = 0
         
         // search each letter in each row
-        board.forEach((row, rowIndex) => {
-            row.forEach((letter, letterIndex) => {
-                if (word[0] === letter) {
+        board.some((row, rowIndex) => {
+
+            if (matchedWordLength === word.length) {
+                return foundWord;
+            }
+
+            row.some((letter, letterIndex) => {
+
+                if (matchedWordLength === word.length) {
+                    return foundWord;
+
+                } else if (word[0] === letter) {
+                    // initialize length of possible match
+                    matchedWordLength = 1
+
                     foundWord = '('+rowIndex+', '+letterIndex+')'
+
                     for ( let i = 1; i < word.length; i++) {
                         if (word[i] === row[letterIndex+i]){
+
+                            matchedWordLength++
+
                             foundWord = foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex+i)+')')
 
+                        } else {
+                            matchedWordLength = 1
                         }
                     }
-                    
-
                 }
             })
         })

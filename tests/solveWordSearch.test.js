@@ -67,6 +67,12 @@ describe("solution should find words to find on the board horizontally", () => {
         ).toBe('(1, 1), (1, 2)')
      })
 
+     test("horizontal search should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+        expect(
+            wordSearchQuery.searchHorizontallyToRight('AZ', [['A', 'B', 'B', 'A'], ['A', 'A', 'Z', 'A'], ['D', 'A', 'D', 'D']])
+        ).toBe('(1, 1), (1, 2)')
+     })
+
     
 
 })
