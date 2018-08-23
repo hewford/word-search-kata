@@ -1,7 +1,7 @@
 const WordSearch = require('../app/board');
 
 
-describe("board should have an array of words to search for", () => {
+describe("Word Search should have an array of words to search for", () => {
     let wordSearch;
 
     beforeEach(() => {
@@ -19,11 +19,19 @@ describe("board should have an array of words to search for", () => {
 })
 
 describe("board should have an array of letters that represent the board", () => {
-   
+    let wordSearch;
+
+    beforeEach(() => {
+        wordSearch = new WordSearch()
+    });
+    
+    test("board should be an array", () => {
+        expect(Array.isArray(wordSearch.board)).toBe(true)
+    });
 })
 
 
-describe('Board setup building an array that represents a square board', () => {
+describe('Word Search setup building an array that represents a square board', () => {
     let wordSearch;
 
     beforeEach(() => {
