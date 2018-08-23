@@ -1,8 +1,8 @@
-const SolveWordSearch = require('../app/solveWordSearch');
+const WordSearchQuery = require('../app/solveWordSearch');
 const WordSearchConfiguration = require('../app/boardSetUp');
 
-// test("word search configuration should be imported to class SolveWordSearch", () => {
-//     const solveWordSearch = new SolveWordSearch()
+// test("word search configuration should be imported to class WordSearchQuery", () => {
+//     const solveWordSearch = new WordSearchQuery()
 
 //     const wordSearchConfiguration = new WordSearchConfiguration()
 
@@ -14,19 +14,19 @@ const WordSearchConfiguration = require('../app/boardSetUp');
 // })
 
 describe("solution should find words to find on the board horizontally", () => {
-    let solveWordSearch;
+    let wordSearchQuery;
 
     let wordSearchConfiguration;
 
     beforeEach(() => {
         wordSearchConfiguration = new WordSearchConfiguration()
         wordSearchConfiguration.setUp()
-        solveWordSearch = new SolveWordSearch(wordSearchConfiguration.wordsToSearchFor)
+        wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
         
     });
 
-    test("", () => {
-
+    test("the word search query this.solution should be an object", () => {
+        expect(typeof wordSearchQuery.solution).toBe('object')
     })
 
 })
