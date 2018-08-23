@@ -13,7 +13,7 @@ describe("board should have an array of words to search for", () => {
     });
 
     test("words to search array elements should be strings", () => {
-        expect(board.wordsToSearchFor.every(function(i){ return typeof i === "string" })).toBe(true)
+        expect(board.wordsToSearchFor.every(function(item){ return typeof item === "string" })).toBe(true)
     })
     
 })
@@ -32,7 +32,9 @@ describe('Board setup building an array that represents a square board', () => {
     });
 
     test('Set up should produce an array of arrays', () => {
-        expect(Array.isArray(board.setUp()[0])).toBe(true)
+        expect(board.setUp().every(function(row){ 
+            return Array.isArray(row)
+        })).toBe(true)
     });
 
     test("Set up array's length should be equal to the length of the sub arrays", () => {
