@@ -15,6 +15,7 @@ describe("board should have an array of words to search for", () => {
     test("words to search array elements should be strings", () => {
         expect(board.wordsToSearchFor.every(function(i){ return typeof i === "string" })).toBe(true)
     })
+    
 })
 
 

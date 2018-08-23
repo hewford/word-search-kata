@@ -8,7 +8,7 @@ const configVariables = require('../config');
 class Board {
 
   constructor () {
-    this.wordsToSearchFor = [];
+    this.wordsToSearchFor = configVariables.WORDS_TO_SEARCH_FOR.split(' ')
   }
 
 
