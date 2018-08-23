@@ -56,7 +56,9 @@ describe('Word Search setup building an array that represents a square board', (
 
     beforeEach(() => {
         wordSearch = new WordSearch()
+        wordSearch.setUp()
     });
+
 
     test('Set up should produce an array', () => {
         expect(Array.isArray(wordSearch.setUp())).toBe(true)
@@ -72,9 +74,19 @@ describe('Word Search setup building an array that represents a square board', (
         expect(wordSearch.setUp().length).toEqual(wordSearch.setUp()[0].length)
     });
     
-    test("word search Set up should define the this.board and its return should be equal to the wordSearch.board", () => {
+    test("word search Set up should define this.board and its return should be equal to the wordSearch.board", () => {
         expect(wordSearch.board).toEqual(wordSearch.setUp())
     })
 
-    
+   test("board's first sub array's length should equal the square root of the letter's array", () => {
+       console.log(wordSearch.board[0].length)
+       console.log(Math.sqrt(wordSearch.lettersArray.length))
+        expect(wordSearch.board[0].length).toEqual(Math.sqrt(wordSearch.lettersArray.length))
+   })
+
+   test("the board first subarray should equal the first part of the letters array", () => {
+        const slicedLettersArray = wordSearch.lettersArray.slice(0, wordSearch.board[0].length)
+        expect(wordSearch.board[0]).toEqual(slicedLettersArray)
+    })
+
 })

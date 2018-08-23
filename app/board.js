@@ -12,12 +12,25 @@ class WordSearch {
 
     this.lettersArray = configVariables.BOARD_AS_SINGLE_STRING.split(' ');
 
-    this.board = [[1]];
+    this.board = [];
 
   }
 
   setUp() {
-    return [[1]]
+    const rowLength = Math.sqrt(this.lettersArray.length)
+    let lettersIndex = 0;
+    for (let i = 0; i < rowLength; i++) {
+      let row = []
+
+      for (let j = 0; j < rowLength; j++) {
+        row.push(this.lettersArray[lettersIndex])
+        lettersIndex++;
+      }
+
+      this.board[i] = row
+    }
+    console.log(this.board)
+    return this.board
   }
     
   
