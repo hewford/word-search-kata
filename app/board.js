@@ -8,9 +8,12 @@ const configVariables = require('../config');
 class WordSearch {
 
   constructor () {
-    this.wordsToSearchFor = configVariables.WORDS_TO_SEARCH_FOR.split(' ')
+    this.wordsToSearchFor = configVariables.WORDS_TO_SEARCH_FOR.split(' ');
 
-    this.boardArray = configVariables.BOARD_AS_SINGLE_STRING.split(' ')
+    this.boardArray = configVariables.BOARD_AS_SINGLE_STRING.split(' ');
+
+    this.board = [[1]];
+
   }
 
   setUp() {

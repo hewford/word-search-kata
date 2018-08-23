@@ -71,6 +71,8 @@ describe('Word Search setup building an array that represents a square board', (
     test("Set up array's length should be equal to the length of the sub arrays", () => {
         expect(wordSearch.setUp().length).toEqual(wordSearch.setUp()[0].length)
     });
-
     
+    test("word search Set up should define the this.board and its return should be equal to the wordSearch.board", () => {
+        expect(wordSearch.board).toEqual(wordSearch.setUp())
+    })
 })
