@@ -1,9 +1,23 @@
 const Board = require('../app/board');
 
-test ("board should have an array of words to search for", () => {
-    const board = new Board()
-    expect(Array.isArray(board.wordsToSearchFor)).toBe(true)
+
+describe("board should have an array of words to search for", () => {
+    let board;
+
+    beforeEach(() => {
+        board = new Board()
+    });
+
+    test("words to search for should be an array", () => {
+        expect(Array.isArray(board.wordsToSearchFor)).toBe(true)
+    });
+
+    test("words to search array elements should be strings", () => {
+        expect(board.wordsToSearchFor.every(function(i){ return typeof i === "string" })).toBe(true)
+    })
 })
+
+
 
 describe('Board setup building an array that represents a square board', () => {
     let board;
