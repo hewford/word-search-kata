@@ -13,7 +13,6 @@ class WordSearch {
     this.board = configVariables.BOARD_AS_SINGLE_STRING.split(' ')
   }
 
-
   setUp() {
     return [[1]]
   }

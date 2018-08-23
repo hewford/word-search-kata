@@ -38,6 +38,12 @@ describe("board should have an array of letters that represent the board", () =>
         expect(wordSearch.board.length).toBeGreaterThan(minLengthOfBoardAsAString)
     })
 
+    test("board should be an array of elements that are single letter strings", () => {
+        expect(wordSearch.board.every(function(item){
+            return typeof item === "string" && item.length === 1
+        })).toBe(true)
+    })
+
 })
 
 /* TESTS THE SET UP OF THE WORD SEARCH PUZZLE */
