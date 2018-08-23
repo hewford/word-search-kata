@@ -13,7 +13,7 @@ const WordSearchConfiguration = require('../app/boardSetUp');
 //     expect(solveWordSearch.wordSearchConfiguration.wordsToSearchFor).toEqual(wordSearchConfiguration.wordsToSearchFor)
 // })
 
-describe("solution should find words to find on the board horizontally", () => {
+describe("the word search query has a detailed object whose properties are named after the words being searched", () => {
     let wordSearchQuery;
 
     let wordSearchConfiguration;
@@ -34,7 +34,27 @@ describe("solution should find words to find on the board horizontally", () => {
         expect(wordSearchConfiguration.wordsToSearchFor.every(function(word){
             return wordSearchQuery.solution.hasOwnProperty(word)
         })).toBe(true)
-
     })
+})
+
+
+describe("solution should find words to find on the board horizontally", () => {
+    let wordSearchQuery;
+
+    let wordSearchConfiguration;
+
+    beforeEach(() => {
+        wordSearchConfiguration = new WordSearchConfiguration()
+        wordSearchConfiguration.setUp()
+
+        wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+        
+    });
+
+    test("horizontal search returns a string that equals this.solution's property asociated with queried word", () => {
+        expect(wordSearchQuery.searchHorizontallyToRight(wordSearchConfiguration.wordsToSearchFor[0])).toEqual(wordSearchQuery.solution[wordSearchConfiguration.wordsToSearchFor[0]])
+    })
+
+    
 
 })

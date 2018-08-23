@@ -10,6 +10,15 @@ class WordSearchQuery {
         })
     }
 
+    searchHorizontallyToRight (word, board) {
+        let foundWord = '';
+        
+
+        this.solution[word] = foundWord;
+        return foundWord
+
+    }
+
 }
 
 module.exports = WordSearchQuery;
