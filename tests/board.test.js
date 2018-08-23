@@ -26,22 +26,26 @@ describe("board should have an array of letters that represent the board", () =>
         wordSearch = new WordSearch()
     });
 
-    test("board should be an array", () => {
-        expect(Array.isArray(wordSearch.board)).toBe(true)
+    test("boardArray should be an array", () => {
+        expect(Array.isArray(wordSearch.boardArray)).toBe(true)
     });
 
-    test("board shoud have a length greater than the longest word squared", () => {
+    test("boardArray shoud have a length greater than the longest word squared", () => {
         const longestWord = wordSearch.wordsToSearchFor.sort(function (a, b) { return b.length - a.length; })[0];
 
         const minLengthOfBoardAsAString = longestWord.length*longestWord.length;
 
-        expect(wordSearch.board.length).toBeGreaterThan(minLengthOfBoardAsAString)
+        expect(wordSearch.boardArray.length).toBeGreaterThan(minLengthOfBoardAsAString)
     })
 
-    test("board should be an array of elements that are single letter strings", () => {
-        expect(wordSearch.board.every(function(item){
+    test("boardArray should be an array of elements that are single letter strings", () => {
+        expect(wordSearch.boardArray.every(function(item){
             return typeof item === "string" && item.length === 1
         })).toBe(true)
+    })
+
+    test("the square root of the boardArray has a remainder to 0 to represent a square board", () => {
+        expect(Math.sqrt(wordSearch.boardArray.length) % 1 === 0).toBe(true)
     })
 
 })

@@ -10,7 +10,7 @@ class WordSearch {
   constructor () {
     this.wordsToSearchFor = configVariables.WORDS_TO_SEARCH_FOR.split(' ')
 
-    this.board = configVariables.BOARD_AS_SINGLE_STRING.split(' ')
+    this.boardArray = configVariables.BOARD_AS_SINGLE_STRING.split(' ')
   }
 
   setUp() {
