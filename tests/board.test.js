@@ -1,6 +1,6 @@
 const WordSearch = require('../app/board');
 
-
+/* TESTS FOR THE CONFIGURATION OF WORDS TO SEARCH FOR */
 describe("Word Search should have an array of words to search for", () => {
     let wordSearch;
 
@@ -18,19 +18,29 @@ describe("Word Search should have an array of words to search for", () => {
     
 })
 
+/* TEST FOR THE CONFIG INPUT OF THE BOARD */
 describe("board should have an array of letters that represent the board", () => {
     let wordSearch;
 
     beforeEach(() => {
         wordSearch = new WordSearch()
     });
-    
+
     test("board should be an array", () => {
         expect(Array.isArray(wordSearch.board)).toBe(true)
     });
+
+    test("board shoud have a length greater than the longest word squared", () => {
+        const longestWord = wordSearch.wordsToSearchFor.sort(function (a, b) { return b.length - a.length; })[0];
+
+        const minLengthOfBoardAsAString = longestWord.length*longestWord.length;
+
+        expect(wordSearch.board.length).toBeGreaterThan(minLengthOfBoardAsAString)
+    })
+
 })
 
-
+/* TESTS THE SET UP OF THE WORD SEARCH PUZZLE */
 describe('Word Search setup building an array that represents a square board', () => {
     let wordSearch;
 
