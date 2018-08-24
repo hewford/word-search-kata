@@ -61,18 +61,21 @@ describe("solution should find words to find on the board horizontally", () => {
        ).toBe('(1, 2)')
     })
 
-    test("horizontal search can find the first and second letter of a word", () => {
+    test("horizontal search moving RIGHT can find the first and second letter of a word", () => {
         expect(
             wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['C', 'A', 'Z'], ['D', 'D', 'D']])
         ).toBe('(1, 1), (1, 2)')
      })
 
-     test("horizontal search should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+     test("horizontal search moving RIGHT should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
         expect(
-            wordSearchQuery.startSearchQuery('AZ', [['A', 'B', 'B', 'A'], ['A', 'A', 'Z', 'A'], ['D', 'A', 'D', 'D']])
-        ).toBe('(1, 1), (1, 2)')
+            wordSearchQuery.startSearchQuery('AZ', [['A', 'B', 'B', 'A'], ['A', 'Z', 'B', 'A'], ['D', 'A', 'D', 'D']])
+        ).toBe('(1, 0), (1, 1)')
      })
 
-    
-
+     test("horizontal search moving LEFT can find the first and second letter of a word", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AC', [['B', 'B', 'B'], ['C', 'A', 'Z'], ['D', 'D', 'D']])
+        ).toBe('(1, 1), (1, 0)')
+     })
 })

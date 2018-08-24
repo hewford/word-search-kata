@@ -29,6 +29,20 @@ class WordSearchQuery {
         }
     }
 
+    searchHorizontallyToLeft(word, row, rowIndex, letterIndex) {
+        for ( let i = 1; i < word.length; i++) {
+            if (word[i] === row[letterIndex-i]) {
+
+                this.matchedWordLength++
+
+                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex-i)+')')
+
+            } else {
+                this.matchedWordLength = 1
+            }
+        }
+    }
+
     startSearchQuery (word, board) {
 
         this.foundWord = '';
@@ -51,6 +65,11 @@ class WordSearchQuery {
 
                     this.searchHorizontallyToRight(word, row, rowIndex, letterIndex);
 
+                    if (this.matchedWordLength === word.length) {
+                        return this.foundWord;
+                    } else {
+                        this.searchHorizontallyToLeft(word, row, rowIndex, letterIndex);
+                    }
                 }
             })
         })
@@ -62,6 +81,7 @@ class WordSearchQuery {
     }
 
 }
+
 
 
 
