@@ -9,49 +9,56 @@ class WordSearchQuery {
         words.forEach((word) => {
             this.solution[word] = '';
         })
+
+        this.foundWord = '';
+
+        this.matchedWordLength = 0;
     }
 
-    searchHorizontallyToRight (word, board) {
-        // initialize placeholder for possible match
-        let foundWord = '';
-        let matchedWordLength = 0
-        
-        // search each letter in each row
-        board.some((row, rowIndex) => {
+    searchHorizontallyToRight(word, row, rowIndex, letterIndex) {
+        for ( let i = 1; i < word.length; i++) {
+            if (word[i] === row[letterIndex+i]) {
 
-            if (matchedWordLength === word.length) {
-                return foundWord;
+                this.matchedWordLength++
+
+                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex+i)+')')
+
+            } else {
+                this.matchedWordLength = 1
+            }
+        }
+    }
+
+    startSearchQuery (word, board) {
+
+        this.foundWord = '';
+
+         // search each letter in each row
+         board.some((row, rowIndex) => {
+            if (this.matchedWordLength === word.length) {
+                return this.foundWord;
             }
 
             row.some((letter, letterIndex) => {
-
-                if (matchedWordLength === word.length) {
-                    return foundWord;
+                if (this.matchedWordLength === word.length) {
+                    return this.foundWord;
 
                 } else if (word[0] === letter) {
                     // initialize length of possible match
-                    matchedWordLength = 1
+                    this.matchedWordLength = 1
 
-                    foundWord = '('+rowIndex+', '+letterIndex+')'
+                    this.foundWord = '('+rowIndex+', '+letterIndex+')'
 
-                    for ( let i = 1; i < word.length; i++) {
-                        if (word[i] === row[letterIndex+i]){
+                    this.searchHorizontallyToRight(word, row, rowIndex, letterIndex);
 
-                            matchedWordLength++
-
-                            foundWord = foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex+i)+')')
-
-                        } else {
-                            matchedWordLength = 1
-                        }
-                    }
                 }
             })
         })
 
-        this.solution[word] = foundWord;
-        return foundWord
+        this.solution[word] = this.foundWord;
 
+        return this.foundWord
+        
     }
 
 }

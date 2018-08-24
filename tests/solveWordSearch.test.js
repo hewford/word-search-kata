@@ -52,24 +52,24 @@ describe("solution should find words to find on the board horizontally", () => {
     });
 
     test("horizontal search returns a string that equals this.solution's property asociated with queried word", () => {
-        expect(wordSearchQuery.searchHorizontallyToRight(wordSearchConfiguration.wordsToSearchFor[0], wordSearchConfiguration.board)).toEqual(wordSearchQuery.solution[wordSearchConfiguration.wordsToSearchFor[0]])
+        expect(wordSearchQuery.startSearchQuery(wordSearchConfiguration.wordsToSearchFor[0], wordSearchConfiguration.board)).toEqual(wordSearchQuery.solution[wordSearchConfiguration.wordsToSearchFor[0]])
     })
 
     test("horizontal search can find the first letter of a word", () => {
        expect(
-           wordSearchQuery.searchHorizontallyToRight('A', [['B', 'B', 'B'], ['C', 'C', 'A'], ['D', 'D', 'D']])
+           wordSearchQuery.startSearchQuery('A', [['B', 'B', 'B'], ['C', 'C', 'A'], ['D', 'D', 'D']])
        ).toBe('(1, 2)')
     })
 
     test("horizontal search can find the first and second letter of a word", () => {
         expect(
-            wordSearchQuery.searchHorizontallyToRight('AZ', [['B', 'B', 'B'], ['C', 'A', 'Z'], ['D', 'D', 'D']])
+            wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['C', 'A', 'Z'], ['D', 'D', 'D']])
         ).toBe('(1, 1), (1, 2)')
      })
 
      test("horizontal search should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
         expect(
-            wordSearchQuery.searchHorizontallyToRight('AZ', [['A', 'B', 'B', 'A'], ['A', 'A', 'Z', 'A'], ['D', 'A', 'D', 'D']])
+            wordSearchQuery.startSearchQuery('AZ', [['A', 'B', 'B', 'A'], ['A', 'A', 'Z', 'A'], ['D', 'A', 'D', 'D']])
         ).toBe('(1, 1), (1, 2)')
      })
 
