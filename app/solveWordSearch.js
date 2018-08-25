@@ -90,6 +90,12 @@ class WordSearchQuery {
 
     searchDiagonallyDownAndRight (word, board, rowIndex, letterIndex) {
         for ( let i = 1; i < word.length; i++) {
+            // check for a negative value so that code doesn't look for a negative index in an array.
+            if(board[rowIndex+i] === undefined) {
+                // reset matchedWordLength since a full match isn't found
+                this.matchedWordLength = 1
+                break;
+            }
 
             // if next letter is found, store the coordinate
             if (word[i] === board[rowIndex+i][letterIndex+i]) {
