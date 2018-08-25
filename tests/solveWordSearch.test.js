@@ -241,5 +241,15 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND RI
         ).toBe('(0, 1), (1, 0)')
     });
 
+    test("diagonal DOWN LEFT search should not check for a letter in a row that does not exist", () => {
+        wordSearchQuery.foundWord = 'testing non-existant rows'
+
+        wordSearchQuery.searchDiagonallyDownAndLeft('AZ', [['D','D'],['A','Z']],  1, 0)
+
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('testing non-existant rows')
+    });
+
     
 });
