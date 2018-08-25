@@ -95,17 +95,22 @@ describe("solution should find words to find on the board vertically", () => {
         
     });
 
+    test("vertical search moving UPWARDS can find the first and second letter of a word", () => {
+
+        wordSearchQuery.foundWord = '(1, 0)'
+
+        wordSearchQuery.searchVerticallyUpwards('AZ', [['Z','D'],['A','D']],  1, 0)
+
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('(1, 0), (0, 0)')
+    })
+
     test("when searching vertically UPWARDS, array should never check for a sub array of a negative index, as undefined is not an array", () => {
         expect(
             wordSearchQuery.startSearchQuery('AZ', [['A', 'B', 'B'], ['C', 'D', 'A'], ['D', 'D', 'A']])
         ).toBe("word not found")
     })
-
-    test("vertical search moving UPWARDS can find the first and second letter of a word", () => {
-        expect(
-            wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['C', 'D', 'Z'], ['D', 'D', 'A']])
-        ).toBe('(2, 2), (1, 2)')
-     });
 
      test("vertical search moving UPWARDS should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
         expect(
