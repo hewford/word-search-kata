@@ -251,5 +251,12 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND RI
         ).toBe('testing non-existant rows')
     });
 
+    test("diagonal DOWN LEFT search should find the first and second letter of a word when startSearchQuery is called", () => {
+          
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['D', 'D', 'A', 'D'], ['D', 'Z', 'D', 'D']])
+        ).toBe('(0, 2), (1, 1)')
+    });
+
     
 });
