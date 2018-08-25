@@ -134,13 +134,11 @@ describe("solution should find words to find on the board vertically", () => {
         ).toBe("word not found")
     })
 
-     test("vertical search moving UPWARDS should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+    test("vertical search moving UPWARDS should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
         expect(
             wordSearchQuery.startSearchQuery('AAC', [['A', 'D', 'D', 'C'], ['D', 'D', 'D', 'A'], ['D', 'D', 'D', 'A'], ['D', 'D', 'D', 'A']])
         ).toBe('(2, 3), (1, 3), (0, 3)')
-     });
-
-    
+    });
 
     test("vertical search moving DOWNARDS can find the first and second letter of a word when downward search is called directly", () => {
 
@@ -165,8 +163,11 @@ describe("solution should find words to find on the board vertically", () => {
         ).toBe("word not found")
     });
 
-    
+    test("vertical search moving DOWNWARDS should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AAC', [['A', 'D', 'D', 'D'], ['A', 'D', 'D', 'A'], ['A', 'D', 'D', 'A'], ['C', 'D', 'D', 'A']])
+        ).toBe('(1, 0), (2, 0), (3, 0)')
+     });
 
-   
 
 })

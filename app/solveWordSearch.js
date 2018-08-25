@@ -48,6 +48,8 @@ class WordSearchQuery {
         for ( let i = 1; i < word.length; i++) {
             // check for a negative value so that code doesn't look for a negative index in an array.
             if(rowIndex-i < 0) {
+                 // reset matchedWordLength since a full match isn't found
+                this.matchedWordLength = 1
                 break;
             }
 
@@ -68,6 +70,8 @@ class WordSearchQuery {
         for ( let i = 1; i < word.length; i++) {
             // check for a negative value so that code doesn't look for a negative index in an array.
             if(board[rowIndex+i] === undefined) {
+                // reset matchedWordLength since a full match isn't found
+                this.matchedWordLength = 1
                 break;
             }
             let check = board[rowIndex+i][letterIndex]
@@ -109,18 +113,24 @@ class WordSearchQuery {
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
+                        this.foundWord = '('+rowIndex+', '+letterIndex+')'
+
                         this.searchHorizontallyToLeft(word, row, rowIndex, letterIndex);
                     }
 
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
+                        this.foundWord = '('+rowIndex+', '+letterIndex+')'
+
                         this.searchVerticallyUpwards(word, board, rowIndex, letterIndex);
                     }
 
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
+                        this.foundWord = '('+rowIndex+', '+letterIndex+')'
+
                         this.searchVerticallyDownwards(word, board, rowIndex, letterIndex);
                     }
                 }
@@ -138,6 +148,14 @@ class WordSearchQuery {
     }
 
 }
+const wordSearchConfiguration = new WordSearchConfiguration()
+
+              wordSearchConfiguration.setUp()
+
+              const wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+
+
+wordSearchQuery.startSearchQuery('AAC', [['A', 'D', 'D', 'D'], ['A', 'D', 'D', 'A'], ['A', 'D', 'D', 'A'], ['C', 'D', 'D', 'A']])
 
 
 module.exports = WordSearchQuery;
