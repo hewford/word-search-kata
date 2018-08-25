@@ -65,17 +65,23 @@ describe("solution should find words to find on the board horizontally", () => {
         expect(
             wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['C', 'A', 'Z'], ['D', 'D', 'D']])
         ).toBe('(1, 1), (1, 2)')
-     })
+     });
 
-     test("horizontal search moving RIGHT should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+     test("horizontal search moving RIGHT should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
         expect(
-            wordSearchQuery.startSearchQuery('AZ', [['A', 'B', 'B', 'A'], ['A', 'Z', 'B', 'A'], ['D', 'A', 'D', 'D']])
-        ).toBe('(1, 0), (1, 1)')
-     })
+            wordSearchQuery.startSearchQuery('AZB', [['A', 'B', 'B', 'A'], ['A', 'Z', 'B', 'A'], ['D', 'A', 'D', 'D']])
+        ).toBe('(1, 0), (1, 1), (1, 2)')
+     });
 
      test("horizontal search moving LEFT can find the first and second letter of a word", () => {
         expect(
             wordSearchQuery.startSearchQuery('AC', [['B', 'B', 'B'], ['C', 'A', 'Z'], ['D', 'D', 'D']])
         ).toBe('(1, 1), (1, 0)')
-     })
+     });
+
+     test("horizontal search moving LEFT should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AAC', [['C', 'B', 'C', 'A'], ['A', 'C', 'A', 'A'], ['D', 'D', 'D', 'D']])
+        ).toBe('(1, 3), (1, 2), (1, 1)')
+     });
 })
