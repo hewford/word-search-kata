@@ -49,7 +49,7 @@ describe("solution should find words to find on the board horizontally", () => {
         ).toBe("word not found")
     })
 
-    test("calling horizontal search directly can find the first and second letter of a word", () => {
+    test("calling horizontal search to the RIGHT directly can find the first and second letter of a word", () => {
 
         wordSearchQuery.foundWord = '(1, 0)'
 
@@ -77,6 +77,17 @@ describe("solution should find words to find on the board horizontally", () => {
             wordSearchQuery.startSearchQuery('AZB', [['A', 'B', 'B', 'A'], ['A', 'Z', 'B', 'A'], ['D', 'A', 'D', 'D']])
         ).toBe('(1, 0), (1, 1), (1, 2)')
      });
+
+     test("calling horizontal search to the LEFT directly can find the first and second letter of a word", () => {
+
+        wordSearchQuery.foundWord = '(1, 1)'
+
+        wordSearchQuery.searchHorizontallyToLeft('AZ', ['Z','A'],  1, 1)
+
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('(1, 1), (1, 0)')
+    })
 
      test("horizontal search moving LEFT can find the first and second letter of a word", () => {
         expect(
