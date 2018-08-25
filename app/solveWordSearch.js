@@ -182,7 +182,7 @@ class WordSearchQuery {
                         this.searchVerticallyDownwards(word, board, rowIndex, letterIndex);
                     }
 
-                    /* === SEARCH DOWN & RIGHT===*/
+                    /* === SEARCH DOWN & RIGHT ===*/
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
@@ -192,7 +192,7 @@ class WordSearchQuery {
                         this.searchDiagonallyDownAndRight(word, board, rowIndex, letterIndex);
                     }
 
-                    /* === SEARCH DOWN & LEFT===*/
+                    /* === SEARCH DOWN & LEFT ===*/
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
@@ -200,6 +200,16 @@ class WordSearchQuery {
                         this.matchedWordLength = 1
 
                         this.searchDiagonallyDownAndLeft(word, board, rowIndex, letterIndex);
+                    }
+
+                    /* === SEARCH UP & RIGHT ===*/
+                    if (this.matchedWordLength === word.length) {
+                        return this.foundWord;
+                    } else {
+                        this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                        this.matchedWordLength = 1
+
+                        this.searchDiagonallyUpAndRight(word, board, rowIndex, letterIndex);
                     }
                 }
             })

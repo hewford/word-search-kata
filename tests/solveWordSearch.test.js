@@ -367,7 +367,7 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND LE
             wordSearchQuery.startSearchQuery('AZ', [
                 ['D', 'D', 'Z', 'D'], 
                 ['D', 'A', 'D', 'D']])
-        ).toBe('(0, 2), (1, 1)')
+        ).toBe('(1, 1), (0, 2)')
     });
 
     test("diagonal UP and RIGHT search should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
@@ -378,7 +378,7 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND LE
                 ['D', 'D', 'D', 'Z'], 
                 ['D', 'Z', 'Y', 'D'], 
                 ['D', 'X', 'D', 'Z']])
-        ).toBe('(1, 3), (2, 2), (3, 1)')
+        ).toBe('(3, 1), (2, 2), (1, 3)')
     }); 
 
     
