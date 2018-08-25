@@ -35,5 +35,7 @@ class WordSearchConfiguration {
     
   
 }
+
+
   
 module.exports = WordSearchConfiguration;

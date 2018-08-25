@@ -1,5 +1,6 @@
 const WordSearchQuery = require('../app/solveWordSearch');
 const WordSearchConfiguration = require('../app/boardSetUp');
+const configVariables = require('../config');
 
 describe("the word search query has a detailed object whose properties are named after the words being searched", () => {
     let wordSearchQuery;
