@@ -208,7 +208,7 @@ describe("solution should find words to find on the board vertically", () => {
 
 });
 
-describe("solution should find words to find on the board DIAGONALLU DOWN AND RIGHT", () => {
+describe("solution should find words to find on the board DIAGONALLY DOWN AND RIGHT", () => {
     let wordSearchQuery;
 
     let wordSearchConfiguration;
@@ -266,7 +266,7 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND RI
     });
 });
 
-describe("solution should find words to find on the board DIAGONALLU DOWN AND LEFT", () => {
+describe("solution should find words to find on the board DIAGONALLY DOWN AND LEFT", () => {
     let wordSearchQuery;
 
     let wordSearchConfiguration;
@@ -324,7 +324,7 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND LE
     }); 
 });
 
-describe("solution should find words to find on the board DIAGONALLU DOWN AND LEFT", () => {
+describe("solution should find words to find on the board DIAGONALLY UP AND RIGHT", () => {
     let wordSearchQuery;
 
     let wordSearchConfiguration;
@@ -380,6 +380,4 @@ describe("solution should find words to find on the board DIAGONALLU DOWN AND LE
                 ['D', 'X', 'D', 'Z']])
         ).toBe('(3, 1), (2, 2), (1, 3)')
     }); 
-
-    
 });
