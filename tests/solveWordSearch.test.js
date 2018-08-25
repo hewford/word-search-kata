@@ -1,18 +1,6 @@
 const WordSearchQuery = require('../app/solveWordSearch');
 const WordSearchConfiguration = require('../app/boardSetUp');
 
-// test("word search configuration should be imported to class WordSearchQuery", () => {
-//     const solveWordSearch = new WordSearchQuery()
-
-//     const wordSearchConfiguration = new WordSearchConfiguration()
-
-//     wordSearchConfiguration.setUp()
-
-//     expect(solveWordSearch.wordSearchConfiguration.board).toEqual(wordSearchConfiguration.board)
-
-//     expect(solveWordSearch.wordSearchConfiguration.wordsToSearchFor).toEqual(wordSearchConfiguration.wordsToSearchFor)
-// })
-
 describe("the word search query has a detailed object whose properties are named after the words being searched", () => {
     let wordSearchQuery;
 
