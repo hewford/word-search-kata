@@ -407,5 +407,17 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
         ).toBe('(1, 1), (0, 0)')
     });
 
+    test("diagonal UP and LEFT search should not check for a letter in a row that does not exist", () => {
+        wordSearchQuery.foundWord = 'testing non-existant rows'
+    
+        wordSearchQuery.searchDiagonallyUpAndLeft('AZ', [
+            ['A','D'],
+            ['D','D']],  0, 0)
+    
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('testing non-existant rows')
+    });
+
     
 });
