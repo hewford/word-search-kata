@@ -170,7 +170,7 @@ describe("solution should find words to find on the board vertically", () => {
 
 });
 
-describe("solution should find words to find on the board diagonally", () => {
+describe("solution should find words to find on the board DIAGONALLU DOWN AND RIGHT", () => {
     let wordSearchQuery;
 
     let wordSearchConfiguration;
@@ -216,7 +216,30 @@ describe("solution should find words to find on the board diagonally", () => {
             wordSearchQuery.startSearchQuery('XYZ', [['A', 'D', 'D', 'D'], ['D', 'X', 'D', 'D'], ['D', 'Z', 'Y', 'D'], ['D', 'Z', 'D', 'Z']])
         ).toBe('(1, 1), (2, 2), (3, 3)')
     });
+});
 
+describe("solution should find words to find on the board DIAGONALLU DOWN AND RIGHT", () => {
+    let wordSearchQuery;
 
+    let wordSearchConfiguration;
 
+    beforeEach(() => {
+        wordSearchConfiguration = new WordSearchConfiguration()
+        wordSearchConfiguration.setUp()
+
+        wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+        
+    });
+
+    test("diagonal DOWN LEFT search should find the first and second letter of a word when downward search is called directly", () => {
+        wordSearchQuery.foundWord = '(0, 1)'
+
+        wordSearchQuery.searchDiagonallyDownAndLeft('AZ', [['D','A'],['Z','D']],  0, 1)
+
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('(0, 1), (1, 0)')
+    });
+
+    
 });
