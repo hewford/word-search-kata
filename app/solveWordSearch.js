@@ -74,7 +74,7 @@ class WordSearchQuery {
                 this.matchedWordLength = 1
                 break;
             }
-            let check = board[rowIndex+i][letterIndex]
+
             // if next letter is found, store the coordinate
             if (word[i] === board[rowIndex+i][letterIndex]) {
 
@@ -85,6 +85,18 @@ class WordSearchQuery {
             } else {
                 this.matchedWordLength = 1
             }
+        }
+    }
+
+    searchDiagonallyDownAndRight (word, board, rowIndex, letterIndex) {
+        for ( let i = 1; i < word.length; i++) {
+
+            // if next letter is found, store the coordinate
+            if (word[i] === board[rowIndex+i][letterIndex+i]) {
+
+                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex+i)+', '+(letterIndex+i)+')')
+
+            } 
         }
     }
 
@@ -148,14 +160,7 @@ class WordSearchQuery {
     }
 
 }
-const wordSearchConfiguration = new WordSearchConfiguration()
 
-              wordSearchConfiguration.setUp()
-
-              const wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
-
-
-wordSearchQuery.startSearchQuery('AAC', [['A', 'D', 'D', 'D'], ['A', 'D', 'D', 'A'], ['A', 'D', 'D', 'A'], ['C', 'D', 'D', 'A']])
 
 
 module.exports = WordSearchQuery;

@@ -141,7 +141,6 @@ describe("solution should find words to find on the board vertically", () => {
     });
 
     test("vertical search moving DOWNARDS can find the first and second letter of a word when downward search is called directly", () => {
-
         wordSearchQuery.foundWord = '(0, 0)'
 
         wordSearchQuery.searchVerticallyDownwards('AZ', [['A','D'],['Z','D']],  0, 0)
@@ -169,5 +168,29 @@ describe("solution should find words to find on the board vertically", () => {
         ).toBe('(1, 0), (2, 0), (3, 0)')
      });
 
+});
 
-})
+describe("solution should find words to find on the board diagonally", () => {
+    let wordSearchQuery;
+
+    let wordSearchConfiguration;
+
+    beforeEach(() => {
+        wordSearchConfiguration = new WordSearchConfiguration()
+        wordSearchConfiguration.setUp()
+
+        wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+        
+    });
+
+    test("diagonal DOWN RIGHT search should find the first and second letter of a word when downward search is called directly", () => {
+        wordSearchQuery.foundWord = '(0, 0)'
+
+        wordSearchQuery.searchDiagonallyDownAndRight('AZ', [['A','D'],['D','Z']],  0, 0)
+
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('(0, 0), (1, 1)')
+    });
+
+});
