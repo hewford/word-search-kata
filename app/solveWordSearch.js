@@ -67,9 +67,9 @@ class WordSearchQuery {
     searchVerticallyDownwards(word, board, rowIndex, letterIndex) {
         for ( let i = 1; i < word.length; i++) {
             // check for a negative value so that code doesn't look for a negative index in an array.
-            // if(rowIndex-i < 0) {
-            //     break;
-            // }
+            if(board[rowIndex+i] === undefined) {
+                break;
+            }
             let check = board[rowIndex+i][letterIndex]
             // if next letter is found, store the coordinate
             if (word[i] === board[rowIndex+i][letterIndex]) {
@@ -116,6 +116,12 @@ class WordSearchQuery {
                         return this.foundWord;
                     } else {
                         this.searchVerticallyUpwards(word, board, rowIndex, letterIndex);
+                    }
+
+                    if (this.matchedWordLength === word.length) {
+                        return this.foundWord;
+                    } else {
+                        this.searchVerticallyDownwards(word, board, rowIndex, letterIndex);
                     }
                 }
             })

@@ -142,7 +142,7 @@ describe("solution should find words to find on the board vertically", () => {
 
     
 
-    test("vertical search moving DOWNARDS can find the first and second letter of a word", () => {
+    test("vertical search moving DOWNARDS can find the first and second letter of a word when downward search is called directly", () => {
 
         wordSearchQuery.foundWord = '(0, 0)'
 
@@ -151,7 +151,21 @@ describe("solution should find words to find on the board vertically", () => {
         expect(
             wordSearchQuery.foundWord
         ).toBe('(0, 0), (1, 0)')
-    })
+    });
+
+    test("vertical search moving DOWNARDS can find the first and second letter of a word", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['A', 'D', 'D', 'C'], ['Z', 'D', 'D', 'D']])
+        ).toBe('(0, 0), (1, 0)')
+    });
+
+    test("when searching vertically DOWNWARDS, array should never check for a sub array of an index that is undefined, as undefined is not an array", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['C', 'D', 'B'], ['D', 'D', 'A']])
+        ).toBe("word not found")
+    });
+
+    
 
    
 
