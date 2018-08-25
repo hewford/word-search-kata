@@ -45,15 +45,17 @@ class WordSearchQuery {
 
     searchVerticallyUpwards(word, board, rowIndex, letterIndex) {
         for ( let i = 1; i < word.length; i++) {
+            // check for a negative value so that code doesn't look for a negative index in an array.
             if(rowIndex-i < 0) {
                 break;
             }
-            let check = board[rowIndex-i][letterIndex]
+
+            // if next letter is found, store the coordinate
             if (word[i] === board[rowIndex-i][letterIndex]) {
 
                 this.matchedWordLength++
 
-                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex-i)+')')
+                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex-i)+', '+(letterIndex)+')')
 
             } else {
                 this.matchedWordLength = 1
@@ -109,14 +111,6 @@ class WordSearchQuery {
     }
 
 }
-
-// const wordSearchConfiguration = new WordSearchConfiguration()
-
-//       wordSearchConfiguration.setUp()
-
-//       const wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
-
-//       wordSearchQuery.startSearchQuery('AAC', [['C', 'B', 'C', 'A'], ['A', 'C', 'A', 'A'], ['D', 'D', 'D', 'D']])
 
 
 module.exports = WordSearchQuery;

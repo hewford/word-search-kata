@@ -100,6 +100,12 @@ describe("solution should find words to find on the board vertically", () => {
         ).toBe("word not found")
     })
 
+    test("vertical search moving UP can find the first and second letter of a word", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['C', 'D', 'Z'], ['D', 'D', 'A']])
+        ).toBe('(2, 2), (1, 2)')
+     });
+
    
 
 })
