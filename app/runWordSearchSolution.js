@@ -8,7 +8,7 @@ wordSearchConfiguration.setUp()
 const wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
 
 wordSearchConfiguration.wordsToSearchFor.forEach((word) => {
-    wordSearchQuery.startSearchQuery(word, wordSearchConfiguration.board)
+  wordSearchQuery.startSearchQuery(word, wordSearchConfiguration.board)
 })
 
 console.log('\n============================\nHere is the solution:\n')

@@ -1,19 +1,15 @@
-
 const configVariables = require('../config');
-
-
 
 // set up board as a sqaure
 
 class WordSearchConfiguration {
 
-  constructor () {
+  constructor() {
     this.wordsToSearchFor = configVariables.WORDS_TO_SEARCH_FOR.split(' ');
 
     this.lettersArray = configVariables.BOARD_AS_SINGLE_STRING.split(' ');
 
     this.board = [];
-
   }
 
   setUp() {
@@ -32,10 +28,6 @@ class WordSearchConfiguration {
 
     return this.board
   }
-    
-  
 }
 
-
-  
 module.exports = WordSearchConfiguration;
