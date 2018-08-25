@@ -228,6 +228,16 @@ class WordSearchQuery {
 
                         this.searchDiagonallyUpAndRight(word, board, rowIndex, letterIndex);
                     }
+
+                    /* === SEARCH UP & LEFT ===*/
+                    if (this.matchedWordLength === word.length) {
+                        return this.foundWord;
+                    } else {
+                        this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                        this.matchedWordLength = 1
+
+                        this.searchDiagonallyUpAndLeft(word, board, rowIndex, letterIndex);
+                    }
                 }
             })
         })

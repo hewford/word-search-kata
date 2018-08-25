@@ -419,5 +419,24 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
         ).toBe('testing non-existant rows')
     });
 
+    test("diagonal UP and LEFT search should find the first and second letter of a word when startSearchQuery is called", () => {
+        
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [
+                ['D', 'Z', 'D', 'D'], 
+                ['D', 'D', 'A', 'D']])
+        ).toBe('(1, 2), (0, 1)')
+    });
     
+    test("diagonal UP and LEFT search should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+            
+        expect(
+            wordSearchQuery.startSearchQuery('XYZ', [
+                ['A', 'D', 'D', 'D'], 
+                ['D', 'Z', 'D', 'Z'], 
+                ['D', 'Z', 'Y', 'D'], 
+                ['D', 'Z', 'D', 'X']])
+        ).toBe('(3, 3), (2, 2), (1, 1)')
+    }); 
+
 });
