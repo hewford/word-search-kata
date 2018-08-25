@@ -43,6 +43,12 @@ describe("solution should find words to find on the board horizontally", () => {
         expect(wordSearchQuery.startSearchQuery(wordSearchConfiguration.wordsToSearchFor[0], wordSearchConfiguration.board)).toEqual(wordSearchQuery.solution[wordSearchConfiguration.wordsToSearchFor[0]])
     })
 
+    test("if a word does not exist, should return 'word not found'", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['B', 'B', 'B'], ['B', 'B', 'A'], ['B', 'B', 'B']])
+        ).toBe("word not found")
+    })
+
     test("horizontal search can find the first letter of a word", () => {
        expect(
            wordSearchQuery.startSearchQuery('A', [['B', 'B', 'B'], ['C', 'C', 'A'], ['D', 'D', 'D']])
@@ -67,9 +73,33 @@ describe("solution should find words to find on the board horizontally", () => {
         ).toBe('(1, 1), (1, 0)')
      });
 
-     test("horizontal search moving LEFT should find first and second letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+     test("horizontal search moving LEFT should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
         expect(
             wordSearchQuery.startSearchQuery('AAC', [['C', 'B', 'C', 'A'], ['A', 'C', 'A', 'A'], ['D', 'D', 'D', 'D']])
         ).toBe('(1, 3), (1, 2), (1, 1)')
      });
+});
+
+
+describe("solution should find words to find on the board vertically", () => {
+    let wordSearchQuery;
+
+    let wordSearchConfiguration;
+
+    beforeEach(() => {
+        wordSearchConfiguration = new WordSearchConfiguration()
+        wordSearchConfiguration.setUp()
+
+        wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+        
+    });
+
+    test("when searching vertically, array should never check for a negative index", () => {
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['A', 'B', 'B'], ['C', 'D', 'A'], ['D', 'D', 'A']])
+        ).toBe("word not found")
+    })
+
+   
+
 })

@@ -43,6 +43,24 @@ class WordSearchQuery {
         }
     }
 
+    searchVerticallyUpwards(word, board, rowIndex, letterIndex) {
+        for ( let i = 1; i < word.length; i++) {
+            if(rowIndex-i < 0) {
+                break;
+            }
+            let check = board[rowIndex-i][letterIndex]
+            if (word[i] === board[rowIndex-i][letterIndex]) {
+
+                this.matchedWordLength++
+
+                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex-i)+')')
+
+            } else {
+                this.matchedWordLength = 1
+            }
+        }
+    }
+
     startSearchQuery (word, board) {
 
         this.foundWord = '';
@@ -70,19 +88,35 @@ class WordSearchQuery {
                     } else {
                         this.searchHorizontallyToLeft(word, row, rowIndex, letterIndex);
                     }
+
+                    if (this.matchedWordLength === word.length) {
+                        return this.foundWord;
+                    } else {
+                        this.searchVerticallyUpwards(word, board, rowIndex, letterIndex);
+                    }
                 }
             })
         })
 
-        this.solution[word] = this.foundWord;
+        if (this.matchedWordLength !== word.length) {
+            this.foundWord = "word not found"
+        }
 
+        this.solution[word] = this.foundWord;
+        
         return this.foundWord
         
     }
 
 }
 
+// const wordSearchConfiguration = new WordSearchConfiguration()
 
+//       wordSearchConfiguration.setUp()
+
+//       const wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+
+//       wordSearchQuery.startSearchQuery('AAC', [['C', 'B', 'C', 'A'], ['A', 'C', 'A', 'A'], ['D', 'D', 'D', 'D']])
 
 
 module.exports = WordSearchQuery;
