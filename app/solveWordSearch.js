@@ -130,6 +130,20 @@ class WordSearchQuery {
         }
     };
 
+    searchDiagonallyUpAndLeft(word, board, rowIndex, letterIndex) {
+        for ( let i = 1; i < word.length; i++) {
+
+            // if next letter is found, store the coordinate
+            if (word[i] === board[rowIndex-i][letterIndex-i]) {
+
+                this.matchedWordLength++
+
+                this.foundWord = this.foundWord.concat(', ', '('+(rowIndex-i)+', '+(letterIndex-i)+')')
+
+            } 
+        }
+    };
+
     startSearchQuery (word, board) {
 
         this.foundWord = '';

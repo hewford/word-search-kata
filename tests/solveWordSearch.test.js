@@ -381,3 +381,31 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
         ).toBe('(3, 1), (2, 2), (1, 3)')
     }); 
 });
+
+describe("solution should find words to find on the board DIAGONALLY UP AND RIGHT", () => {
+    let wordSearchQuery;
+
+    let wordSearchConfiguration;
+
+    beforeEach(() => {
+        wordSearchConfiguration = new WordSearchConfiguration()
+        wordSearchConfiguration.setUp()
+
+        wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+        
+    });
+
+    test("diagonal UP and LEFT search should find the first and second letter of a word when downward search is called directly", () => {
+        wordSearchQuery.foundWord = '(1, 1)'
+
+        wordSearchQuery.searchDiagonallyUpAndLeft('AZ', [
+            ['Z','D'],
+            ['D','A']],  1, 1)
+
+        expect(
+            wordSearchQuery.foundWord
+        ).toBe('(1, 1), (0, 0)')
+    });
+
+    
+});
