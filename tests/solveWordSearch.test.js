@@ -203,4 +203,20 @@ describe("solution should find words to find on the board diagonally", () => {
         ).toBe('testing non-existant rows')
     });
 
+    test("diagonal DOWN RIGHT search should find the first and second letter of a word when startSearchQuery is called", () => {
+        
+        expect(
+            wordSearchQuery.startSearchQuery('AZ', [['A', 'D', 'D', 'D'], ['D', 'Z', 'D', 'D']])
+        ).toBe('(0, 0), (1, 1)')
+    });
+
+    test("diagonal DOWN RIGHT search should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
+        
+        expect(
+            wordSearchQuery.startSearchQuery('XYZ', [['A', 'D', 'D', 'D'], ['D', 'X', 'D', 'D'], ['D', 'Z', 'Y', 'D'], ['D', 'Z', 'D', 'Z']])
+        ).toBe('(1, 1), (2, 2), (3, 3)')
+    });
+
+
+
 });

@@ -23,8 +23,6 @@ class WordSearchQuery {
 
                 this.foundWord = this.foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex+i)+')')
 
-            } else {
-                this.matchedWordLength = 1
             }
         }
     }
@@ -38,8 +36,6 @@ class WordSearchQuery {
 
                 this.foundWord = this.foundWord.concat(', ', '('+(rowIndex)+', '+(letterIndex-i)+')')
 
-            } else {
-                this.matchedWordLength = 1
             }
         }
     }
@@ -60,8 +56,6 @@ class WordSearchQuery {
 
                 this.foundWord = this.foundWord.concat(', ', '('+(rowIndex-i)+', '+(letterIndex)+')')
 
-            } else {
-                this.matchedWordLength = 1
             }
         }
     }
@@ -82,8 +76,6 @@ class WordSearchQuery {
 
                 this.foundWord = this.foundWord.concat(', ', '('+(rowIndex+i)+', '+(letterIndex)+')')
 
-            } else {
-                this.matchedWordLength = 1
             }
         }
     }
@@ -99,6 +91,8 @@ class WordSearchQuery {
 
             // if next letter is found, store the coordinate
             if (word[i] === board[rowIndex+i][letterIndex+i]) {
+
+                this.matchedWordLength++
 
                 this.foundWord = this.foundWord.concat(', ', '('+(rowIndex+i)+', '+(letterIndex+i)+')')
 
@@ -121,35 +115,51 @@ class WordSearchQuery {
                     return this.foundWord;
 
                 } else if (word[0] === letter) {
-                    // initialize length of possible match
-                    this.matchedWordLength = 1
 
                     this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                    this.matchedWordLength = 1
 
+                    /* === SEARCH RIGHT ===*/
                     this.searchHorizontallyToRight(word, row, rowIndex, letterIndex);
 
+                    /* === SEARCH LEFT ===*/
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
                         this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                        this.matchedWordLength = 1
 
                         this.searchHorizontallyToLeft(word, row, rowIndex, letterIndex);
                     }
 
+                    /* === SEARCH UP ===*/
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
                         this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                        this.matchedWordLength = 1
 
                         this.searchVerticallyUpwards(word, board, rowIndex, letterIndex);
                     }
 
+                    /* === SEARCH DOWN ===*/
                     if (this.matchedWordLength === word.length) {
                         return this.foundWord;
                     } else {
                         this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                        this.matchedWordLength = 1
 
                         this.searchVerticallyDownwards(word, board, rowIndex, letterIndex);
+                    }
+
+                    /* === SEARCH DOWN & RIGHT===*/
+                    if (this.matchedWordLength === word.length) {
+                        return this.foundWord;
+                    } else {
+                        this.foundWord = '('+rowIndex+', '+letterIndex+')'
+                        this.matchedWordLength = 1
+
+                        this.searchDiagonallyDownAndRight(word, board, rowIndex, letterIndex);
                     }
                 }
             })
@@ -166,7 +176,6 @@ class WordSearchQuery {
     }
 
 }
-
 
 
 module.exports = WordSearchQuery;
