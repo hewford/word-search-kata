@@ -18,7 +18,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex) + ', ' + (letterIndex + i) + ')')
+        this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex) + ')')
 
       }
     }
@@ -31,7 +31,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex) + ', ' + (letterIndex - i) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex) + ')')
 
       }
     }
@@ -50,7 +50,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex - i) + ', ' + (letterIndex) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex) + ', ' + (rowIndex - i) + ')')
       }
     }
   }
@@ -67,7 +67,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex + i) + ', ' + (letterIndex) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex) + ', ' + (rowIndex + i) + ')')
 
       }
     }
@@ -85,7 +85,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex + i) + ', ' + (letterIndex + i) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex + i) + ')')
 
       }
     }
@@ -103,7 +103,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex + i) + ', ' + (letterIndex - i) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex + i) + ')')
 
       }
     }
@@ -121,7 +121,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex - i) + ', ' + (letterIndex + i) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex - i) + ')')
 
       }
     }
@@ -138,7 +138,7 @@ class WordSearchQuery {
 
         this.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (rowIndex - i) + ', ' + (letterIndex - i) + ')')
+          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex - i) + ')')
 
       }
     }
@@ -160,7 +160,7 @@ class WordSearchQuery {
 
         } else if (word[0] === letter) {
 
-          this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+          this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
           this.matchedWordLength = 1
 
           /* === SEARCH RIGHT ===*/
@@ -170,7 +170,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchHorizontallyToLeft(word, row, rowIndex, letterIndex);
@@ -180,7 +180,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchVerticallyUpwards(word, board, rowIndex, letterIndex);
@@ -190,7 +190,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchVerticallyDownwards(word, board, rowIndex, letterIndex);
@@ -200,7 +200,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchDiagonallyDownAndRight(word, board, rowIndex, letterIndex);
@@ -210,7 +210,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchDiagonallyDownAndLeft(word, board, rowIndex, letterIndex);
@@ -220,7 +220,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchDiagonallyUpAndRight(word, board, rowIndex, letterIndex);
@@ -230,7 +230,7 @@ class WordSearchQuery {
           if (this.matchedWordLength === word.length) {
             return this.foundWord;
           } else {
-            this.foundWord = '(' + rowIndex + ', ' + letterIndex + ')'
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
             this.searchDiagonallyUpAndLeft(word, board, rowIndex, letterIndex);

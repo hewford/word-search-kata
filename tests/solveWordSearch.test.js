@@ -46,7 +46,7 @@ describe("testing the set up of the search query", () => {
         ['C', 'C', 'A'],
         ['D', 'D', 'D']
       ])
-    ).toBe('(1, 2)')
+    ).toBe('(2, 1)')
   });
 
   test("after finding one word, the next search should return a matchedWordLength of 0 if character is not on the board", () => {
@@ -84,13 +84,13 @@ describe("solution should find words to find on the board horizontally", () => {
 
   test("calling horizontal search to the RIGHT directly can find the first and second letter of a word", () => {
 
-    wordSearchQuery.foundWord = '(1, 0)'
+    wordSearchQuery.foundWord = '(0, 1)'
 
     wordSearchQuery.searchHorizontallyToRight('AZ', ['A', 'Z'], 1, 0)
 
     expect(
       wordSearchQuery.foundWord
-    ).toBe('(1, 0), (1, 1)')
+    ).toBe('(0, 1), (1, 1)')
   })
 
   test("horizontal search moving RIGHT can find the first and second letter of a word", () => {
@@ -100,7 +100,7 @@ describe("solution should find words to find on the board horizontally", () => {
         ['C', 'A', 'Z'],
         ['D', 'D', 'D']
       ])
-    ).toBe('(1, 1), (1, 2)')
+    ).toBe('(1, 1), (2, 1)')
   });
 
   test("horizontal search moving RIGHT should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
@@ -110,7 +110,7 @@ describe("solution should find words to find on the board horizontally", () => {
         ['A', 'Z', 'B', 'A'],
         ['D', 'A', 'D', 'D']
       ])
-    ).toBe('(1, 0), (1, 1), (1, 2)')
+    ).toBe('(0, 1), (1, 1), (2, 1)')
   });
 
   test("calling horizontal search to the LEFT directly can find the first and second letter of a word", () => {
@@ -121,7 +121,7 @@ describe("solution should find words to find on the board horizontally", () => {
 
     expect(
       wordSearchQuery.foundWord
-    ).toBe('(1, 1), (1, 0)')
+    ).toBe('(1, 1), (0, 1)')
   })
 
   test("horizontal search moving LEFT can find the first and second letter of a word", () => {
@@ -131,7 +131,7 @@ describe("solution should find words to find on the board horizontally", () => {
         ['C', 'A', 'Z'],
         ['D', 'D', 'D']
       ])
-    ).toBe('(1, 1), (1, 0)')
+    ).toBe('(1, 1), (0, 1)')
   });
 
   test("horizontal search moving LEFT should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
@@ -141,7 +141,7 @@ describe("solution should find words to find on the board horizontally", () => {
         ['A', 'C', 'A', 'A'],
         ['D', 'D', 'D', 'D']
       ])
-    ).toBe('(1, 3), (1, 2), (1, 1)')
+    ).toBe('(3, 1), (2, 1), (1, 1)')
   });
 
 });
@@ -162,7 +162,7 @@ describe("solution should find words to find on the board vertically", () => {
 
   test("vertical search moving UPWARDS can find the first and second letter of a word", () => {
 
-    wordSearchQuery.foundWord = '(1, 0)'
+    wordSearchQuery.foundWord = '(0, 1)'
 
     wordSearchQuery.searchVerticallyUpwards('AZ', [
       ['Z', 'D'],
@@ -171,7 +171,7 @@ describe("solution should find words to find on the board vertically", () => {
 
     expect(
       wordSearchQuery.foundWord
-    ).toBe('(1, 0), (0, 0)')
+    ).toBe('(0, 1), (0, 0)')
   })
 
   test("when searching vertically UPWARDS, array should never check for a sub array of a negative index, as undefined is not an array", () => {
@@ -192,7 +192,7 @@ describe("solution should find words to find on the board vertically", () => {
         ['D', 'D', 'D', 'A'],
         ['D', 'D', 'D', 'A']
       ])
-    ).toBe('(2, 3), (1, 3), (0, 3)')
+    ).toBe('(3, 2), (3, 1), (3, 0)')
   });
 
   test("vertical search moving DOWNARDS can find the first and second letter of a word when downward search is called directly", () => {
@@ -205,7 +205,7 @@ describe("solution should find words to find on the board vertically", () => {
 
     expect(
       wordSearchQuery.foundWord
-    ).toBe('(0, 0), (1, 0)')
+    ).toBe('(0, 0), (0, 1)')
   });
 
   test("vertical search moving DOWNARDS can find the first and second letter of a word", () => {
@@ -214,7 +214,7 @@ describe("solution should find words to find on the board vertically", () => {
         ['A', 'D', 'D', 'C'],
         ['Z', 'D', 'D', 'D']
       ])
-    ).toBe('(0, 0), (1, 0)')
+    ).toBe('(0, 0), (0, 1)')
   });
 
   test("when searching vertically DOWNWARDS, array should never check for a sub array of an index that is undefined, as undefined is not an array", () => {
@@ -235,7 +235,7 @@ describe("solution should find words to find on the board vertically", () => {
         ['A', 'D', 'D', 'A'],
         ['C', 'D', 'D', 'A']
       ])
-    ).toBe('(1, 0), (2, 0), (3, 0)')
+    ).toBe('(0, 1), (0, 2), (0, 3)')
   });
 
 });
@@ -316,7 +316,7 @@ describe("solution should find words to find on the board DIAGONALLY DOWN AND LE
   });
 
   test("diagonal DOWN LEFT search should find the first and second letter of a word when downward search is called directly", () => {
-    wordSearchQuery.foundWord = '(0, 1)'
+    wordSearchQuery.foundWord = '(1, 0)'
 
     wordSearchQuery.searchDiagonallyDownAndLeft('AZ', [
       ['D', 'A'],
@@ -325,7 +325,7 @@ describe("solution should find words to find on the board DIAGONALLY DOWN AND LE
 
     expect(
       wordSearchQuery.foundWord
-    ).toBe('(0, 1), (1, 0)')
+    ).toBe('(1, 0), (0, 1)')
   });
 
   test("diagonal DOWN LEFT search should not check for a letter in a row that does not exist", () => {
@@ -348,7 +348,7 @@ describe("solution should find words to find on the board DIAGONALLY DOWN AND LE
         ['D', 'D', 'A', 'D'],
         ['D', 'Z', 'D', 'D']
       ])
-    ).toBe('(0, 2), (1, 1)')
+    ).toBe('(2, 0), (1, 1)')
   });
 
   test("diagonal DOWN LEFT search should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
@@ -360,7 +360,7 @@ describe("solution should find words to find on the board DIAGONALLY DOWN AND LE
         ['D', 'Z', 'Y', 'D'],
         ['D', 'Z', 'D', 'Z']
       ])
-    ).toBe('(1, 3), (2, 2), (3, 1)')
+    ).toBe('(3, 1), (2, 2), (1, 3)')
   });
 });
 
@@ -378,7 +378,7 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
   });
 
   test("diagonal UP AND RIGHT search should find the first and second letter of a word when downward search is called directly", () => {
-    wordSearchQuery.foundWord = '(1, 0)'
+    wordSearchQuery.foundWord = '(0, 1)'
 
     wordSearchQuery.searchDiagonallyUpAndRight('AZ', [
       ['D', 'Z'],
@@ -387,7 +387,7 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
 
     expect(
       wordSearchQuery.foundWord
-    ).toBe('(1, 0), (0, 1)')
+    ).toBe('(0, 1), (1, 0)')
   });
 
   test("diagonal UP and RIGHT search should not check for a letter in a row that does not exist", () => {
@@ -410,7 +410,7 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
         ['D', 'D', 'Z', 'D'],
         ['D', 'A', 'D', 'D']
       ])
-    ).toBe('(1, 1), (0, 2)')
+    ).toBe('(1, 1), (2, 0)')
   });
 
   test("diagonal UP and RIGHT search should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
@@ -422,11 +422,11 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
         ['D', 'Z', 'Y', 'D'],
         ['D', 'X', 'D', 'Z']
       ])
-    ).toBe('(3, 1), (2, 2), (1, 3)')
+    ).toBe('(1, 3), (2, 2), (3, 1)')
   });
 });
 
-describe("solution should find words to find on the board DIAGONALLY UP AND RIGHT", () => {
+describe("solution should find words to find on the board DIAGONALLY UP AND LEFT", () => {
   let wordSearchQuery;
 
   let wordSearchConfiguration;
@@ -472,7 +472,7 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
         ['D', 'Z', 'D', 'D'],
         ['D', 'D', 'A', 'D']
       ])
-    ).toBe('(1, 2), (0, 1)')
+    ).toBe('(2, 1), (1, 0)')
   });
 
   test("diagonal UP and LEFT search should find first, second, and third letters and store the correct coordinates even if it comes across the first letter multiple times", () => {
