@@ -39,7 +39,7 @@ describe("testing the set up of the search query", () => {
     ).toBe("word not found")
   });
 
-  test("horizontal search can find the first letter of a word", () => {
+  test("search can find the first letter of a word", () => {
     expect(
       wordSearchQuery.startSearchQuery('A', [
         ['B', 'B', 'B'],
@@ -47,7 +47,24 @@ describe("testing the set up of the search query", () => {
         ['D', 'D', 'D']
       ])
     ).toBe('(1, 2)')
-  })
+  });
+
+  test("after finding one word, the next search should return a matchedWordLength of 0 if character is not on the board", () => {
+    wordSearchQuery.startSearchQuery('A', [
+      ['B', 'B', 'B'],
+      ['C', 'C', 'A'],
+      ['D', 'D', 'D']
+    ])
+
+    wordSearchQuery.startSearchQuery('Z', [
+      ['B', 'B', 'B'],
+      ['C', 'C', 'A'],
+      ['D', 'D', 'D']
+    ])
+    expect(
+      wordSearchQuery.matchedWordLength
+    ).toBe(0)
+  });
 });
 
 

@@ -145,7 +145,7 @@ class WordSearchQuery {
   };
 
   startSearchQuery(word, board) {
-
+    this.matchedWordLength = 0;
     this.foundWord = '';
 
     // search each letter in each row

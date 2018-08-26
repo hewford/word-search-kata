@@ -10,6 +10,12 @@
             "request": "launch",
             "name": "solveWordSearch",
             "program": "${workspaceFolder}/app/solveWordSearch.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "runWordSearchSolution",
+            "program": "${workspaceFolder}/app/runWordSearchSolution.js"
         }
     ]
 }
