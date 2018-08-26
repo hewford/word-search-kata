@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "testDetails": "npm test boardSetUp && npm test solveWordSearch",
+    "testDetails": "npm test boardSetUp && npm test solveWordSearch && npm test config",
     "solution": "node app/runWordSearchSolution.js",
-    "start": "npm test boardSetUp && npm test solveWordSearch && node app/runWordSearchSolution.js"
+    "start": "npm test config && npm test boardSetUp && npm test solveWordSearch && node app/runWordSearchSolution.js"
   },
   "keywords": [],
   "author": "",
