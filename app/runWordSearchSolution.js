@@ -1,6 +1,5 @@
 const WordSearchQuery = require('../app/solveWordSearch');
 const WordSearchConfiguration = require('../app/boardSetUp');
-const configVariables = require('../config');
 
 const wordSearchConfiguration = new WordSearchConfiguration()
 wordSearchConfiguration.setUp()

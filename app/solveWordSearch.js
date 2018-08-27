@@ -1,3 +1,6 @@
+const WordSearchConfiguration = require('../app/boardSetUp');
+const configVariables = require('../config');
+
 class WordSearchQuery {
   constructor(words) {
     // initialize the object that will contain the solution
@@ -12,9 +15,9 @@ class WordSearchQuery {
     this.matchedWordLength = 0;
   }
 
-  searchHorizontallyToRight(word, row, rowIndex, letterIndex) {
+  searchHorizontallyToRight(word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
-      if (word[i] === row[letterIndex + i]) {
+      if (word[i] === board[rowIndex][letterIndex + i]) {
 
         this.matchedWordLength++
 
@@ -24,10 +27,10 @@ class WordSearchQuery {
     }
   }
 
-  searchHorizontallyToLeft(word, row, rowIndex, letterIndex) {
+  searchHorizontallyToLeft(word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
 
-      if (word[i] === row[letterIndex - i]) {
+      if (word[i] === board[rowIndex][letterIndex - i]) {
 
         this.matchedWordLength++
 
@@ -164,7 +167,7 @@ class WordSearchQuery {
           this.matchedWordLength = 1
 
           /* === SEARCH RIGHT ===*/
-          this.searchHorizontallyToRight(word, row, rowIndex, letterIndex);
+          this.searchHorizontallyToRight(word, board, rowIndex, letterIndex);
 
           /* === SEARCH LEFT ===*/
           if (this.matchedWordLength === word.length) {
@@ -173,7 +176,7 @@ class WordSearchQuery {
             this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
             this.matchedWordLength = 1
 
-            this.searchHorizontallyToLeft(word, row, rowIndex, letterIndex);
+            this.searchHorizontallyToLeft(word, board, rowIndex, letterIndex);
           }
 
           /* === SEARCH UP ===*/
