@@ -85,7 +85,6 @@ describe("solution should find words to find on the board horizontally", () => {
   test("calling horizontal search to the RIGHT directly can find the first and second letter of a word", () => {
 
     wordSearchQuery.foundWord = '(0, 0)'
-    console.log(wordSearchQuery)
 
     wordSearchQuery.searchHorizontallyToRight(wordSearchQuery, 'AZ', [['A', 'Z']], 0, 0)
 
