@@ -15,32 +15,32 @@ class WordSearchQuery {
     this.matchedWordLength = 0;
   }
 
-  searchHorizontallyToRight(word, board, rowIndex, letterIndex) {
+  searchHorizontallyToRight(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
       if (word[i] === board[rowIndex][letterIndex + i]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-        this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex) + ')')
+        that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex) + ')')
 
       }
     }
   }
 
-  searchHorizontallyToLeft(word, board, rowIndex, letterIndex) {
+  searchHorizontallyToLeft(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
 
       if (word[i] === board[rowIndex][letterIndex - i]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex) + ')')
 
       }
     }
   }
 
-  searchVerticallyUpwards(word, board, rowIndex, letterIndex) {
+  searchVerticallyUpwards(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
 
       // check for a negative value so that code doesn't look for a negative index in an array.
@@ -51,14 +51,14 @@ class WordSearchQuery {
       // if next letter is found, store the coordinate
       else if (word[i] === board[rowIndex - i][letterIndex]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex) + ', ' + (rowIndex - i) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex) + ', ' + (rowIndex - i) + ')')
       }
     }
   }
 
-  searchVerticallyDownwards(word, board, rowIndex, letterIndex) {
+  searchVerticallyDownwards(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
       // check for a negative value so that code doesn't look for a negative index in an array.
       if (board[rowIndex + i] === undefined) {
@@ -68,15 +68,15 @@ class WordSearchQuery {
       // if next letter is found, store the coordinate
       else if (word[i] === board[rowIndex + i][letterIndex]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex) + ', ' + (rowIndex + i) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex) + ', ' + (rowIndex + i) + ')')
 
       }
     }
   }
 
-  searchDiagonallyDownAndRight(word, board, rowIndex, letterIndex) {
+  searchDiagonallyDownAndRight(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
       // check for a negative value so that code doesn't look for a negative index in an array.
       if (board[rowIndex + i] === undefined) {
@@ -86,15 +86,15 @@ class WordSearchQuery {
       // if next letter is found, store the coordinate
       if (word[i] === board[rowIndex + i][letterIndex + i]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex + i) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex + i) + ')')
 
       }
     }
   };
 
-  searchDiagonallyDownAndLeft(word, board, rowIndex, letterIndex) {
+  searchDiagonallyDownAndLeft(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
       // check for a negative value so that code doesn't look for a negative index in an array.
       if (board[rowIndex + i] === undefined) {
@@ -104,15 +104,15 @@ class WordSearchQuery {
       // if next letter is found, store the coordinate
       if (word[i] === board[rowIndex + i][letterIndex - i]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex + i) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex + i) + ')')
 
       }
     }
   };
 
-  searchDiagonallyUpAndRight(word, board, rowIndex, letterIndex) {
+  searchDiagonallyUpAndRight(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
       // check for a negative value so that code doesn't look for a negative index in an array.
       if (board[rowIndex - i] === undefined) {
@@ -122,15 +122,15 @@ class WordSearchQuery {
       // if next letter is found, store the coordinate
       if (word[i] === board[rowIndex - i][letterIndex + i]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex - i) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex + i) + ', ' + (rowIndex - i) + ')')
 
       }
     }
   };
 
-  searchDiagonallyUpAndLeft(word, board, rowIndex, letterIndex) {
+  searchDiagonallyUpAndLeft(that, word, board, rowIndex, letterIndex) {
     for (let i = 1; i < word.length; i++) {
       // check for a negative value so that code doesn't look for a negative index in an array.
       if (board[rowIndex - i] === undefined) {
@@ -139,9 +139,9 @@ class WordSearchQuery {
       // if next letter is found, store the coordinate
       if (word[i] === board[rowIndex - i][letterIndex - i]) {
 
-        this.matchedWordLength++
+        that.matchedWordLength++
 
-          this.foundWord = this.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex - i) + ')')
+          that.foundWord = that.foundWord.concat(', ', '(' + (letterIndex - i) + ', ' + (rowIndex - i) + ')')
 
       }
     }
@@ -158,6 +158,20 @@ class WordSearchQuery {
       }
 
       row.some((letter, letterIndex) => {
+
+        // take in an argument that calls one of the searches above
+        const searchSurroundingLetters = (direction) => {
+
+          if (this.matchedWordLength === word.length) {
+            return this.foundWord;
+          } else {
+            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
+            this.matchedWordLength = 1
+            return direction(this, word, board, rowIndex, letterIndex)
+          }
+        }
+
+
         if (this.matchedWordLength === word.length) {
           return this.foundWord;
 
@@ -167,77 +181,29 @@ class WordSearchQuery {
           this.matchedWordLength = 1
 
           /* === SEARCH RIGHT ===*/
-          this.searchHorizontallyToRight(word, board, rowIndex, letterIndex);
+          searchSurroundingLetters(this.searchHorizontallyToRight)
 
           /* === SEARCH LEFT ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchHorizontallyToLeft(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchHorizontallyToLeft)
 
           /* === SEARCH UP ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchVerticallyUpwards(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchVerticallyUpwards)
 
           /* === SEARCH DOWN ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchVerticallyDownwards(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchVerticallyDownwards)
 
           /* === SEARCH DOWN & RIGHT ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchDiagonallyDownAndRight(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchDiagonallyDownAndRight)
 
           /* === SEARCH DOWN & LEFT ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchDiagonallyDownAndLeft(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchDiagonallyDownAndLeft)
 
           /* === SEARCH UP & RIGHT ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchDiagonallyUpAndRight(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchDiagonallyUpAndRight)
 
           /* === SEARCH UP & LEFT ===*/
-          if (this.matchedWordLength === word.length) {
-            return this.foundWord;
-          } else {
-            this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
-            this.matchedWordLength = 1
-
-            this.searchDiagonallyUpAndLeft(word, board, rowIndex, letterIndex);
-          }
+          searchSurroundingLetters(this.searchDiagonallyUpAndLeft)
+ 
         }
       })
     })
@@ -253,5 +219,13 @@ class WordSearchQuery {
   }
 
 }
+
+const wordSearchConfiguration = new WordSearchConfiguration()
+    wordSearchConfiguration.setUp()
+    
+    const wordSearchQuery = new WordSearchQuery(wordSearchConfiguration.wordsToSearchFor)
+
+    wordSearchQuery.startSearchQuery(wordSearchConfiguration.wordsToSearchFor[0], wordSearchConfiguration.board)
+
 
 module.exports = WordSearchQuery;

@@ -85,8 +85,9 @@ describe("solution should find words to find on the board horizontally", () => {
   test("calling horizontal search to the RIGHT directly can find the first and second letter of a word", () => {
 
     wordSearchQuery.foundWord = '(0, 0)'
+    console.log(wordSearchQuery)
 
-    wordSearchQuery.searchHorizontallyToRight('AZ', [['A', 'Z']], 0, 0)
+    wordSearchQuery.searchHorizontallyToRight(wordSearchQuery, 'AZ', [['A', 'Z']], 0, 0)
 
     expect(
       wordSearchQuery.foundWord
@@ -117,7 +118,7 @@ describe("solution should find words to find on the board horizontally", () => {
 
     wordSearchQuery.foundWord = '(1, 0)'
 
-    wordSearchQuery.searchHorizontallyToLeft('AZ', [['Z', 'A']], 0, 1)
+    wordSearchQuery.searchHorizontallyToLeft(wordSearchQuery, 'AZ', [['Z', 'A']], 0, 1)
 
     expect(
       wordSearchQuery.foundWord
@@ -164,7 +165,7 @@ describe("solution should find words to find on the board vertically", () => {
 
     wordSearchQuery.foundWord = '(0, 1)'
 
-    wordSearchQuery.searchVerticallyUpwards('AZ', [
+    wordSearchQuery.searchVerticallyUpwards(wordSearchQuery, 'AZ', [
       ['Z', 'D'],
       ['A', 'D']
     ], 1, 0)
@@ -198,7 +199,7 @@ describe("solution should find words to find on the board vertically", () => {
   test("vertical search moving DOWNARDS can find the first and second letter of a word when downward search is called directly", () => {
     wordSearchQuery.foundWord = '(0, 0)'
 
-    wordSearchQuery.searchVerticallyDownwards('AZ', [
+    wordSearchQuery.searchVerticallyDownwards(wordSearchQuery, 'AZ', [
       ['A', 'D'],
       ['Z', 'D']
     ], 0, 0)
@@ -256,7 +257,7 @@ describe("solution should find words to find on the board DIAGONALLY DOWN AND RI
   test("diagonal DOWN RIGHT search should find the first and second letter of a word when downward search is called directly", () => {
     wordSearchQuery.foundWord = '(0, 0)'
 
-    wordSearchQuery.searchDiagonallyDownAndRight('AZ', [
+    wordSearchQuery.searchDiagonallyDownAndRight(wordSearchQuery, 'AZ', [
       ['A', 'D'],
       ['D', 'Z']
     ], 0, 0)
@@ -318,7 +319,7 @@ describe("solution should find words to find on the board DIAGONALLY DOWN AND LE
   test("diagonal DOWN LEFT search should find the first and second letter of a word when downward search is called directly", () => {
     wordSearchQuery.foundWord = '(1, 0)'
 
-    wordSearchQuery.searchDiagonallyDownAndLeft('AZ', [
+    wordSearchQuery.searchDiagonallyDownAndLeft(wordSearchQuery, 'AZ', [
       ['D', 'A'],
       ['Z', 'D']
     ], 0, 1)
@@ -380,7 +381,7 @@ describe("solution should find words to find on the board DIAGONALLY UP AND RIGH
   test("diagonal UP AND RIGHT search should find the first and second letter of a word when downward search is called directly", () => {
     wordSearchQuery.foundWord = '(0, 1)'
 
-    wordSearchQuery.searchDiagonallyUpAndRight('AZ', [
+    wordSearchQuery.searchDiagonallyUpAndRight(wordSearchQuery, 'AZ', [
       ['D', 'Z'],
       ['A', 'D']
     ], 1, 0)
@@ -442,7 +443,7 @@ describe("solution should find words to find on the board DIAGONALLY UP AND LEFT
   test("diagonal UP and LEFT search should find the first and second letter of a word when downward search is called directly", () => {
     wordSearchQuery.foundWord = '(1, 1)'
 
-    wordSearchQuery.searchDiagonallyUpAndLeft('AZ', [
+    wordSearchQuery.searchDiagonallyUpAndLeft(wordSearchQuery, 'AZ', [
       ['Z', 'D'],
       ['D', 'A']
     ], 1, 1)
