@@ -122,7 +122,7 @@ class WordSearchQuery {
         const searchSurroundingLetters = (direction) => {
 
           if (this.matchedWordLength === word.length) {
-            return this.foundWord;
+            return true
           } else {
 
             this.foundWord = '(' + letterIndex + ', ' + rowIndex + ')'
@@ -134,7 +134,7 @@ class WordSearchQuery {
 
 
         if (this.matchedWordLength === word.length) {
-          return this.foundWord;
+          return true
 
         } else if (word[0] === letter) {
 
